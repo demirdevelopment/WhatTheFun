@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
 
     const revealOptions = {
-        threshold: 0.15, // Trigger when 15% of element is visible
-        rootMargin: "0px 0px -50px 0px"
+        threshold: 0.05, // Lower threshold for mobile compatibility
+        rootMargin: "0px 0px 0px 0px"
     };
 
     const revealObserver = new IntersectionObserver(function (entries, observer) {
