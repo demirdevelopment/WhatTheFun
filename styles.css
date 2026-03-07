@@ -54,6 +54,7 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
     /* Offset for fixed header */
+    overflow-x: hidden;
 }
 
 body {
@@ -61,7 +62,6 @@ body {
     background-color: var(--bg-dark);
     color: var(--text-main);
     line-height: 1.6;
-    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -97,6 +97,7 @@ img {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+    box-sizing: border-box;
 }
 
 /* ==========================================================================
@@ -115,6 +116,7 @@ img {
 .section {
     padding: 6rem 0;
     position: relative;
+    overflow: hidden;
 }
 
 .text-center {
@@ -1049,6 +1051,7 @@ img {
 .submit-btn {
     align-self: flex-start;
     margin-top: 1rem;
+    font-size: 1.1rem;
 }
 
 .submit-btn span {
@@ -1178,40 +1181,9 @@ img {
     }
 }
 
-/* ====== MOBILE OVERFLOW FIXES ====== */
-html,
-body {
-    overflow-x: hidden !important;
-    width: 100%;
-    position: relative;
-}
-
-.container {
-    overflow-x: hidden;
-    max-width: 100vw;
-}
-
-.hero-visual {
-    max-width: 100vw;
-    overflow: hidden;
-}
-
-.image-wrapper {
-    min-height: 250px !important;
-    height: auto !important;
-}
-
-.rotator-slides {
-    min-height: 250px;
-}
-
+/* ====== CAROUSEL FLEX ALIGNMENT ====== */
 .rotator-slide {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.header {
-    max-width: 100vw;
-    overflow-x: hidden;
 }

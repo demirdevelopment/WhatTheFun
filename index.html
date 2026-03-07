@@ -15,6 +15,8 @@
         rel="stylesheet">
     <!-- Custom Styles -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Preload critical logo -->
+    <link rel="preload" href="Assets/WTF Logo@2x.webp" as="image" type="image/webp">
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
@@ -30,7 +32,12 @@
     <header class="header" id="header">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <img src="Assets/WTF Logo.png" alt="WhatTheFun Logo">
+                <picture>
+                    <source srcset="Assets/WTF Logo@1x.webp 1x, Assets/WTF Logo@2x.webp 2x" type="image/webp">
+                    <source srcset="Assets/WTF Logo@1x.png 1x, Assets/WTF Logo@2x.png 2x" type="image/png">
+                    <img src="Assets/WTF Logo@2x.png" alt="WhatTheFun Logo" width="200" height="229"
+                        fetchpriority="high">
+                </picture>
             </a>
             <nav class="nav">
                 <ul class="nav-list">
@@ -272,14 +279,19 @@
                                 <span class="icon">📍</span>
                                 <div>
                                     <strong>Adres</strong>
-                                    <p>Emirgan Mahallesi Sezai Bey Caddesi No:35, Sarıyer / İstanbul</p>
+                                    <p><a href="https://maps.google.com/?q=Emirgan+Mahallesi+Sezai+Bey+Caddesi+No:35+Sarıyer+İstanbul"
+                                            target="_blank" rel="noopener noreferrer"
+                                            style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Emirgan
+                                            Mahallesi Sezai Bey Caddesi No:35, Sarıyer / İstanbul</a></p>
                                 </div>
                             </div>
                             <div class="contact-item">
                                 <span class="icon">✉️</span>
                                 <div>
                                     <strong>E-posta</strong>
-                                    <p>hello@whatthefun.com</p>
+                                    <p><a href="mailto:hello@whatthefun.com"
+                                            style="color:inherit;text-decoration:underline;text-underline-offset:3px;">hello@whatthefun.com</a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -297,9 +309,9 @@
                         <div class="form-group">
                             <select id="subject" name="subject" required>
                                 <option value="" disabled selected>Konu Seçiniz</option>
-                                <option value="Futbol Fakültesi">Futbol Fakültesi</option>
                                 <option value="Ofiste Hayat Var">Ofiste Hayat Var</option>
-                                <option value="Reklam Oburları">Reklam Oburları</option>
+                                <option value="Futbol Fakültesi">Futbol Fakültesi</option>
+                                <option value="Reklam Oburları">Reklam Oburları Kampüste</option>
                                 <option value="Diğer">Diğer</option>
                             </select>
                         </div>
@@ -318,7 +330,12 @@
     <footer class="footer">
         <div class="container footer-container">
             <div class="footer-brand">
-                <img src="Assets/WTF Logo.png" alt="WhatTheFun Logo" class="footer-logo">
+                <picture>
+                    <source srcset="Assets/WTF Logo@1x.webp 1x, Assets/WTF Logo@2x.webp 2x" type="image/webp">
+                    <source srcset="Assets/WTF Logo@1x.png 1x, Assets/WTF Logo@2x.png 2x" type="image/png">
+                    <img src="Assets/WTF Logo@2x.png" alt="WhatTheFun Logo" class="footer-logo" width="200" height="229"
+                        loading="lazy">
+                </picture>
                 <p>Sonuç getiren marka etkinliklerinin mimarı.</p>
             </div>
 
