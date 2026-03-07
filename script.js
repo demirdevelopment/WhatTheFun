@@ -72,10 +72,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     const updateCounter = () => {
                         current += increment;
                         if (current < target) {
-                            stat.innerText = Math.ceil(current);
+                            // Format the number to locale string (e.g., 500.000 instead of 500000)
+                            stat.innerText = Math.ceil(current).toLocaleString('tr-TR');
                             requestAnimationFrame(updateCounter);
                         } else {
-                            stat.innerText = target;
+                            stat.innerText = target.toLocaleString('tr-TR');
                         }
                     };
 
