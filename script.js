@@ -97,22 +97,41 @@ document.addEventListener('DOMContentLoaded', () => {
         statsObserver.observe(visionSection);
     }
 
-    // --- 5. Form Submisssion Prevention (Demo Only) ---
+    // --- 5. Form Submission via EmailJS ---
     const form = document.getElementById('contactForm');
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const btn = form.querySelector('.submit-btn');
-            const originalText = btn.innerHTML;
+            const originalHTML = btn.innerHTML;
 
-            btn.innerHTML = 'Gönderildi ✓';
-            btn.style.background = '#10B981'; // Success green
+            // Loading state
+            btn.innerHTML = 'Gönderiliyor...';
+            btn.disabled = true;
 
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.style.background = ''; // Reset
+            emailjs.sendForm(
+                'YOUR_SERVICE_ID',   // Replace with your EmailJS Service ID
+                'YOUR_TEMPLATE_ID',  // Replace with your EmailJS Template ID
+                form
+            ).then(() => {
+                btn.innerHTML = 'Gönderildi ✓';
+                btn.style.background = '#10B981'; // Success green
                 form.reset();
-            }, 3000);
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 3000);
+            }).catch((error) => {
+                console.error('EmailJS error:', error);
+                btn.innerHTML = 'Hata! Tekrar deneyin.';
+                btn.style.background = '#EF4444'; // Error red
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 3000);
+            });
         });
     }
 
