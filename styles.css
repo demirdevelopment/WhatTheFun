@@ -1081,6 +1081,7 @@ img {
 
 .footer-logo {
     height: 50px;
+    width: auto;
     margin-bottom: 1.5rem;
 }
 
