@@ -749,6 +749,11 @@ img {
    ========================================================================== */
 @media (max-width: 968px) {
 
+    .section {
+        padding: 3.6rem 0;
+        /* 40% less than desktop 6rem */
+    }
+
     .section-flex,
     .vision-grid {
         grid-template-columns: 1fr;
