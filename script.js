@@ -30,28 +30,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 3. Scroll Reveal Animations using Intersection Observer ---
+    // --- 3. Scroll Reveal Animations (Safari-compatible) ---
     const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
 
-    const revealOptions = {
-        threshold: 0.05, // Lower threshold for mobile compatibility
-        rootMargin: "0px 0px 0px 0px"
-    };
+    function isInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return rect.top < window.innerHeight * 0.95 && rect.bottom > 0;
+    }
 
-    const revealObserver = new IntersectionObserver(function (entries, observer) {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
-            } else {
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target); // Stop observing once revealed
+    function revealVisible() {
+        revealElements.forEach(el => {
+            if (isInViewport(el)) {
+                el.classList.add('active');
             }
         });
-    }, revealOptions);
+    }
 
-    revealElements.forEach(el => {
-        revealObserver.observe(el);
-    });
+    // Run on scroll
+    window.addEventListener('scroll', revealVisible, { passive: true });
+
+    // Run immediately for elements already visible
+    revealVisible();
+
+    // Safety net: force-reveal all remaining hidden elements after 1.5s
+    // (handles Safari IntersectionObserver edge cases)
+    setTimeout(() => {
+        revealElements.forEach(el => el.classList.add('active'));
+    }, 1500);
 
     // --- 4. Counter Animation for Stats ---
     const stats = document.querySelectorAll('.stat-number');
