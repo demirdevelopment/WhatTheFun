@@ -854,24 +854,26 @@ img {
         width: 100%;
     }
 
-    /* Shrink floating cards for mobile */
+    /* Shrink floating cards background, increase text for mobile */
     .hero-visual {
         height: 350px;
     }
 
     .floating-card {
-        padding: 0.5rem 0.8rem;
+        padding: 0.25rem 0.5rem;
         gap: 0.5rem;
     }
 
     .floating-card h3 {
-        font-size: 0.8rem;
+        font-size: 1.1rem;
+        /* Increased text size */
+        font-weight: 700;
     }
 
     .card-icon {
-        width: 30px;
-        height: 30px;
-        font-size: 1.2rem;
+        width: 28px;
+        height: 28px;
+        font-size: 1.3rem;
     }
 
     .card-1 {
