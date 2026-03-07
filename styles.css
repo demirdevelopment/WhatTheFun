@@ -779,9 +779,8 @@ img {
     }
 
     .hero-visual {
-        height: 400px;
-        order: -1;
-        /* Move visual above text on mobile */
+        height: 250px;
+        /* Content appears before visual in HTML, so no order override needed */
     }
 
     .floating-card {
@@ -856,7 +855,8 @@ img {
 
     /* Shrink floating cards background, increase text for mobile */
     .hero-visual {
-        height: 420px;
+        height: 210px;
+        /* Cut in half */
     }
 
     .floating-card {
