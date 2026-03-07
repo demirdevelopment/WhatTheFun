@@ -110,8 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.disabled = true;
 
             emailjs.sendForm(
-                'YOUR_SERVICE_ID',   // Replace with your EmailJS Service ID
-                'YOUR_TEMPLATE_ID',  // Replace with your EmailJS Template ID
+                'service_b23g1bd',
+                'template_xfnkmgt',
                 form
             ).then(() => {
                 btn.innerHTML = 'Gönderildi ✓';
