@@ -843,6 +843,12 @@ img {
     .vision-stats {
         grid-template-columns: 1fr;
     }
+
+    /* Convert horizontal reveals to vertical on mobile to prevent overflow bugs */
+    .reveal-left,
+    .reveal-right {
+        transform: translateY(30px);
+    }
 }
 
 /* ==========================================================================
