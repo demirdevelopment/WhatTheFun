@@ -211,6 +211,7 @@ img {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.0));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
     pointer-events: none;
 }
@@ -963,6 +964,7 @@ img {
 .contact-item .icon {
     font-size: 1.5rem;
     background: rgba(255, 255, 255, 0.05);
+    flex: 0 0 40px;
     width: 40px;
     height: 40px;
     display: flex;
