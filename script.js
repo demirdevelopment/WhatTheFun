@@ -159,10 +159,40 @@ document.addEventListener('DOMContentLoaded', () => {
             showSlide(nextIndex);
         };
 
+        const prevSlide = () => {
+            let prevIndex = (currentSlide - 1 + slideCount) % slideCount;
+            showSlide(prevIndex);
+        };
+
         const startRotation = () => {
             if (intervalId) clearInterval(intervalId);
-            // Stagger the start time slightly for each rotator if desired, but 4s is fine
             intervalId = setInterval(nextSlide, 4000);
+        };
+
+        // --- Swipe Support ---
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        rotator.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        rotator.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        const handleSwipe = () => {
+            const swipeThreshold = 50;
+            if (touchStartX - touchEndX > swipeThreshold) {
+                // Swiped left -> Show next
+                nextSlide();
+                startRotation(); // Reset timer
+            } else if (touchEndX - touchStartX > swipeThreshold) {
+                // Swiped right -> Show prev
+                prevSlide();
+                startRotation(); // Reset timer
+            }
         };
 
         // Manual navigation
