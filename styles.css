@@ -620,6 +620,12 @@ img {
     z-index: 2;
 }
 
+.rotator-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .rotator-nav {
     position: absolute;
     bottom: 1.5rem;
