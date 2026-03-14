@@ -649,18 +649,16 @@ img {
     width: auto !important;
     height: auto !important;
     object-fit: contain;
-    /* Use grayscale instead of inversion to prevent multi-color logos with outlines (like Ülker) from merging into bloated shapes */
-    /* Add a subtle white drop-shadow so solid black partners remain highly visible on the dark background */
-    filter: grayscale(1) drop-shadow(0 0 15px rgba(255, 255, 255, 0.1));
-    opacity: 0.7;
-    transition: filter var(--transition-normal), opacity var(--transition-normal);
+    /* Use grayscale, followed by invert, followed by brightness to perfectly render both black logos (like Turkish Airlines) and multi-colored logos (like Ülker) without bloat */
+    filter: grayscale(1) invert(1) brightness(1.5);
+    opacity: 0.6;
+    transition: opacity var(--transition-normal);
 }
 
 .brand-item:hover img {
-    /* Reveal original brand colors and boost the glow to pop dark logos */
-    filter: grayscale(0) drop-shadow(0 0 25px rgba(255, 255, 255, 0.4));
+    /* Keep the shape and color consistent on hover so black logos don't vanish, just increase opacity */
+    filter: grayscale(1) invert(1) brightness(1.8);
     opacity: 1;
-    /* Removed scaling transform to prevent the aliasing/deformation bug during hover states */
 }
 
 /* Image Rotator/Carousel */
